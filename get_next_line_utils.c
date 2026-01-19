@@ -6,7 +6,7 @@
 /*   By: bbastos- <bbastos-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:01:53 by bbastos-          #+#    #+#             */
-/*   Updated: 2026/01/16 16:23:20 by bbastos-         ###   ########.fr       */
+/*   Updated: 2026/01/19 10:58:06 by bbastos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	resul = malloc((len1 + len2 + 1) * sizeof(char));
+	result = malloc((len1 + len2 + 1) * sizeof(char));
 	if (result == NULL)
 		return (NULL);
 	str_fill(result, s1, s2);

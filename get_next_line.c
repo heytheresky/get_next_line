@@ -6,7 +6,7 @@
 /*   By: bbastos- <bbastos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:18:10 by bbastos-          #+#    #+#             */
-/*   Updated: 2026/01/19 14:57:43 by bbastos-         ###   ########.fr       */
+/*   Updated: 2026/01/23 10:27:34 by bbastos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static char	*ft_strchr(const char *s, int c)
 	unsigned int	i;
 	unsigned int	uc;
 
-	uc = (unsigned char) c;
+	uc = (unsigned char)c;
 	i = 0;
 	if (!s)
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		if ((unsigned char) s[i] == uc)
+		if ((unsigned char)s[i] == uc)
 			return ((char *)(s + i));
 		i++;
 	}
@@ -80,7 +80,7 @@ static char	*update_backup(char *backup)
 	char	*new_backup;
 
 	newline_pos = ft_strchr(backup, '\n');
-	if (! newline_pos)
+	if (!newline_pos)
 	{
 		free(backup);
 		return (NULL);
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	static char	*backup;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	if (!backup)
 		backup = ft_strdup("");
@@ -108,3 +108,22 @@ char	*get_next_line(int fd)
 	backup = update_backup(backup);
 	return (line);
 }
+
+/* #include <stdio.h>
+int	main(int argc, char **argv)
+{
+	int		fd;
+	char	*line;
+
+	if (argc != 2)
+		return (printf("Incorrect usage."), 1);
+	fd = open(argv[1], O_RDONLY);
+
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return(0);
+} */
